@@ -22,3 +22,5 @@ student3 = students.find_one({"student_id": "1009"})
 
 print("Displaying Student 3 Query")
 print("  Student ID: " + student3["student_id"] + "\n  First Name: " + student3["first_name"] + "\n  Last Name: " + student3["last_name"] + "\n")
+
+input("\n\n End of program, press any key to exit...")

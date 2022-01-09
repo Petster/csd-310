@@ -103,3 +103,5 @@ student2_student_id = students.insert_one(student2).inserted_id
 print("  Inserted student record Student2 into the students collection with document_id " + str(student2_student_id))
 student3_student_id = students.insert_one(student3).inserted_id
 print("  Inserted student record Student3 into the students collection with document_id " + str(student3_student_id))
+
+input("\n\n End of program, press any key to exit...")
