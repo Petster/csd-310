@@ -1,9 +1,16 @@
+# mongodb_test.py
+# Jason Palmeri
+# 1/9/2022
+# test mongodb connection
+
 from pymongo import MongoClient
 
-url = "mongodb+srv://admin:admin@cluster0.wfbdf.mongodb.net/pytech?retryWrites=true&w=majority"
+url = "mongodb+srv://admin:admin@cluster0.wfbdf.mongodb.net/pytech?ssl=true&ssl_cert_reqs=CERT_NONE"
 
 client = MongoClient(url)
 
 db = client.pytech
 
-print(db.list_collection_names())   
+print("Pytech Collection List\n")
+print(db.list_collection_names())
+input("\n\n End of program, press any key to exit...")
