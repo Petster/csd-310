@@ -5,12 +5,12 @@
 
 from pymongo import MongoClient
 
-url = "mongodb+srv://admin:admin@cluster0.wfbdf.mongodb.net/pytech?ssl=true&ssl_cert_reqs=CERT_NONE"
+url = "mongodb+srv://admin:admin@cluster0.wfbdf.mongodb.net/pytech"
 
 client = MongoClient(url)
 
 db = client.pytech
 
-print("Pytech Collection List\n")
+print("--Pytech Collection List--")
 print(db.list_collection_names())
 input("\n\n End of program, press any key to exit...")
