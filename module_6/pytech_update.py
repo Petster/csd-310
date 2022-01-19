@@ -1,6 +1,6 @@
 # pytech_update
 # Jason Palmeri
-# 1/17/2022
+# 1/19/2022
 
 from pymongo import MongoClient
 
@@ -10,7 +10,7 @@ client = MongoClient(url)
 
 db = client.pytech
 
-students = db.studenss
+students = db.students
 
 studentList = students.find({})
 
@@ -19,7 +19,7 @@ print("-Student Documents-")
 for docs in studentList:
     print("Student ID:" + docs["student_id"] + "\nFirst Name: " + docs["first_name"] + "\nLast Name: " + docs["last_name"] + "\n")
 
-result = students.update_one({"student_id": "1007"}, {"$set": {"last_name": "Oakenshield II"}})
+result = students.update_one({"student_id": "1007"}, {"$set": {"last_name": "Ardenweald"}})
 
 studentOne = students.find_one({"student_id": "1007"})
 
