@@ -1,6 +1,6 @@
-# pytech_query
+# pysports_join_queries
 # Jason Palmeri
-# 1/27/2022
+# 1/29/2022
 
 import mysql.connector
 from mysql.connector import errorcode
@@ -21,23 +21,13 @@ try:
     
     cursor = db.cursor()
 
-    cursor.execute("SELECT * FROM team")
-
-    teams = cursor.fetchall()
-
-    print("-Printing Team Names-")
-    for team in teams:
-        print("Team ID: {}\nTeam Name: {}\nMascot: {}".format(team[0], team[1], team[2]))
-        print(" ")
-    
-    cursor.execute("SELECT * FROM player")
+    cursor.execute("SELECT player_id, first_name, last_name, team_name FROM player INNER JOIN team ON player.team_id = team.team_id")
 
     players = cursor.fetchall()
-    
-    print("-Printing Players-")
+
     for player in players:
-        print("Player ID: {}\nPlayer First Name: {}\nPlayer Last Name: {}\nTeam ID: {}".format(player[0], player[1], player[2], player[3]))
-        print("")
+        print("  Player ID: {}\n  First Name: {}\n  Last Name: {}\n  Team Name: {}\n".format(player[0], player[1], player[2], player[3]))
+
 
     input("\n\n Press any key to continue...")
 except mysql.connector.Error as err:

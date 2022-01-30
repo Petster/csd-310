@@ -1,3 +1,7 @@
+# mysql_test
+# Jason Palmeri
+# 1/27/2022
+
 import mysql.connector
 from mysql.connector import errorcode
 
