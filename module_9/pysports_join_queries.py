@@ -25,6 +25,8 @@ try:
 
     players = cursor.fetchall()
 
+    print("-Player Info-\n")
+
     for player in players:
         print("  Player ID: {}\n  First Name: {}\n  Last Name: {}\n  Team Name: {}\n".format(player[0], player[1], player[2], player[3]))
 
