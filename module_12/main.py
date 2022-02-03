@@ -7,19 +7,20 @@ root = Tk.Tk()
 root.title("WhatABook Online")
 root.geometry('1280x720')
 
-buttonFont = font.Font(size=25)
+def createMenuFrame():
+    menuFrame = ttk.Frame(root)
+    buttonFont = font.Font(size=20)
+    labelOne = Tk.Button(menuFrame, text="View Books", font=buttonFont).grid(row=1, column=0, columnspan=2)
+    labelTwo = Tk.Button(menuFrame, text="View Store Locations", font=buttonFont).grid(row=1, column=3)
+    labelThree = Tk.Button(menuFrame, text="My Account", bg='blue', fg='white', font=buttonFont).grid(row=2)
+    labelFour = Tk.Button(menuFrame, text="Exit", font=buttonFont, bg='red', fg='white', command=root.destroy).grid(row=3)
+    menuFrame.place(x=0, y=0)
+    return menuFrame
 
-labelOne = Tk.Button(root, text="View Books", width=20, font=buttonFont)
-labelOne.place(height=100, width=350, x=200, y=200)
+def clearWindow(frame):
+    frame.destroy()
 
-labelTwo = Tk.Button(root, text="View Store Locations", width=20, font=buttonFont)
-labelTwo.place(height=100, width=350, x=730, y=200)
-
-labelThree = Tk.Button(root, text="My Account", bg='blue', fg='white', width=20, font=buttonFont)
-labelThree.place(height=100, width=880, x=200, y=330)
-
-labelFour = Tk.Button(root, text="Exit", width=10, font=buttonFont, bg='red', fg='white', command=root.destroy)
-labelFour.place(height=100, width=1280, x=0, y=620)
+createMenuFrame()
 
 root.resizable(False, False) 
 root.mainloop()
