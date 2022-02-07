@@ -2,32 +2,45 @@ import tkinter as Tk
 from tkinter import ttk
 from tkinter import font
 
-def createMenuFrame(container):
-    menuFrame = ttk.Frame(container)
-    buttonFont = font.Font(size=20)
-    labelOne = Tk.Button(menuFrame, text="View Books", font=buttonFont, command= lambda: viewBooks(root, menuFrame)).grid(row=0, column=0)
-    labelTwo = Tk.Button(menuFrame, text="View Store Locations", font=buttonFont).grid(row=0, column=1)
-    labelThree = Tk.Button(menuFrame, text="My Account", bg='blue', fg='white', font=buttonFont).place(x=10,y=182,width=570,height=72)
-    labelFour = Tk.Button(menuFrame, text="Exit", font=buttonFont, bg='red', fg='white', command=root.destroy).place(x=0,y=428,width=600,height=72)
-    return menuFrame
-
 def clearWindow(frame):
-    frame.destroy()
+    for widget in frame.winfo_children():
+        widget.destroy()
 
-def viewBooks(root, menuFrame):
-    clearWindow(menuFrame)
-    viewBookFrame = ttk.Frame(root)
-    buttonFont = font.Font(size=20)
-    labelFour = Tk.Button(viewBookFrame, text="Back", font=buttonFont, bg='red', fg='white', command=lambda: createMenuFrame(root)).grid(row=4, columnspan=4)
-    viewBookFrame.pack()
+def createMenuFrame(frame):
+    if(frame != "none"):
+        clearWindow(frame)
+        frame.grid()
+    labelOne = Tk.Button(frame, text="View Books", font=buttonFont, command= lambda: viewBooks(frame)).grid(row=0, column=0)
+    labelTwo = Tk.Button(frame, text="View Store Locations", font=buttonFont, command= lambda: viewLocations(frame)).grid(row=0, column=1)
+    labelThree = Tk.Button(frame, text="My Account", bg='blue', fg='white', font=buttonFont, command= lambda: accountCheck(frame)).grid(row=1, column=0)
+    labelFour = Tk.Button(frame, text="Exit", font=buttonFont, bg='red', fg='white', command=root.destroy).grid(row=2, column=0)
+    return frame
 
+def viewBooks(frame):
+    clearWindow(frame)
+    header = Tk.Label(frame, text="WhatABook's Inventory", font=buttonFont).grid(row=0, column=3, columnspan=5)
+    backButton = Tk.Button(frame, text="Back", font=buttonFont, bg='red', fg='white', command= lambda: createMenuFrame(frame)).grid(row=4, columnspan=4)
+
+def viewLocations(frame):
+    clearWindow(frame)
+    header = Tk.Label(frame, text="WhatABook Locations", font=buttonFont).grid(row=0, column=3, columnspan=5)
+    backButton = Tk.Button(frame, text="Back", font=buttonFont, bg='red', fg='white', command= lambda: createMenuFrame(frame)).grid(row=2, columnspan=4)
+
+def accountCheck(frame):
+    clearWindow(frame)
+    header = Tk.Label(frame, text="Verify Account ID", font=buttonFont).grid(row=0, column=3, columnspan=5)
+    backButton = Tk.Button(frame, text="Back", font=buttonFont, bg='red', fg='white', command= lambda: createMenuFrame(frame)).grid(row=2, columnspan=4)
 
 #init tkinter
 root = Tk.Tk()
 root.title("WhatABook Online")
 root.geometry('600x500')
+root.grid_rowconfigure(0, weight=1)
+root.grid_columnconfigure(0, weight=1)
 
-start = createMenuFrame(root).grid(column=1, row=0)
+buttonFont = font.Font(size=20)
+mainFrame = ttk.Frame(root)
+start = createMenuFrame(mainFrame).grid(row=0, column=0)
 
 
 
