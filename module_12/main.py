@@ -26,9 +26,20 @@ def viewLocations(frame):
     header = Tk.Label(frame, text="WhatABook Locations", font=buttonFont).grid(row=0, column=3, columnspan=5)
     backButton = Tk.Button(frame, text="Back", font=buttonFont, bg='red', fg='white', command= lambda: createMenuFrame(frame)).grid(row=2, columnspan=4)
 
+def printIn(var):
+    inp = var.get()
+    print(inp)
+
 def accountCheck(frame):
     clearWindow(frame)
-    header = Tk.Label(frame, text="Verify Account ID", font=buttonFont).grid(row=0, column=3, columnspan=5)
+    header = Tk.Label(frame, text="Verify Account ID", font=buttonFont).grid(row=0, column=3, columnspan=4)
+    userIn = Tk.Entry(frame).grid(row=1, column=3, columnspan=4)
+    userInButton = Tk.Button(frame, text="Submit", font=buttonFont, bg='green', fg='white', command= lambda: printIn(userIn)).grid(row=2, column=3, columnspan=4)
+    backButton = Tk.Button(frame, text="Back", font=buttonFont, bg='red', fg='white', command= lambda: createMenuFrame(frame)).grid(row=3, column=3, columnspan=4)
+
+def createAccountMenu(frame):
+    clearWindow(frame)
+    header = Tk.Label(frame, text="What would you like to do?", font=buttonFont).grid(row=0, column=3, columnspan=5)
     backButton = Tk.Button(frame, text="Back", font=buttonFont, bg='red', fg='white', command= lambda: createMenuFrame(frame)).grid(row=2, columnspan=4)
 
 #init tkinter
